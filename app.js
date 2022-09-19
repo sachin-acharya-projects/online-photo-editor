@@ -30,18 +30,25 @@ const settings = {
 	inversion: inversionInput.value
 }
 
-let defaultSettings = {}
+let defaultSettings = {
+	brightness: "100",
+  saturation: "100",
+	blur: "0",
+  inversion: "0"
+}
 let image = null
 
 function resetSettings() {
-  settings.brightness = "100";
-  settings.saturation = "100";
-  settings.blur = "0";
-  settings.inversion = "0";
+	Object.assign(settings, defaultSettings) // target: settings & source: defaultSettings:: a.brightness = b.brightness
+  // settings.brightness = "100";
+  // settings.saturation = "100";
+  // settings.blur = "0";
+  // settings.inversion = "0";
 
   // Checking if defaultSettings is empty by checking absolute value for undefined
   if (defaultSettings['brightness'] === undefined) {
-  	defaultSettings = {...settings}
+  	// defaultSettings = {...settings}
+  	console.log("settings", settings)
   }
 
   brightnessInput.value = settings.brightness;
