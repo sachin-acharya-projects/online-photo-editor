@@ -73,6 +73,13 @@ body {
 	width: 100%;
 	color: #ccc;
 	font-size: 13px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.control-list > div > div > label.disable {
+	text-decoration: line-through;
+	opacity: 0.5;
 }
 
 .control-list > div > input {

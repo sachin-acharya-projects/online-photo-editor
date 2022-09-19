@@ -21,6 +21,7 @@ const canvas = $("#canvas")
 const canvasCtx = canvas.getContext("2d")
 
 const settings = {}
+let defaultSettings = {}
 let image = null
 
 function resetSettings() {
@@ -28,6 +29,10 @@ function resetSettings() {
   settings.saturation = "100";
   settings.blur = "0";
   settings.inversion = "0";
+
+  if (defaultSettings['brightness'] === undefined) {
+  	defaultSettings = {...settings}
+  }
 
   brightnessInput.value = settings.brightness;
   saturationInput.value = settings.saturation;
@@ -73,6 +78,19 @@ function setEvents(element, handler) {
 
 function reloadEditor() {
 	fileInput.click()
+}
+
+function enableDisable(label_html) {
+	const valueFor = label_html.getAttribute("for")
+	if (label_html.classList.contains("disable")) {
+		label_html.classList.remove("disable")
+		previous_value = label_html.getAttribute("data-val")
+		resetOne(valueFor, previous_value)
+	}else {
+		label_html.classList.add('disable')
+		label_html.setAttribute("data-val", settings[valueFor])
+		resetOne(valueFor, defaultSettings[valueFor])
+	}
 }
 
 setEvents(brightnessInput, () => {
