@@ -216,7 +216,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 	color: #ccc;
 	background: #282b59;
-	user-select: all;
+	user-select: unset;
 }
 
 .extra-controls div{
