@@ -123,3 +123,13 @@ resetallBtn.addEventListener("click", () => {
 	resetSettings()
 	renderImage()
 })
+
+function contextHandler(e) {
+	e.preventDefault()
+}
+document.addEventListener("contextmenu", contextHandler, false)
+
+filenameInput.addEventListener("contextmenu", (e) => {
+	e.stopPropagation(); // it worked
+	return true
+}, true)
